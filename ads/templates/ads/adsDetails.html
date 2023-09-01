@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+  <!-- about section -->
+
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{{ads.image.url}}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                {{ads.title}}
+              </h2>
+            </div>
+            <p>
+              <span>Description: </span> <br> {{ads.description}}
+            </p>
+            <p>
+                <span>Location:</span><br> {{ads.location}}
+            </p>
+            <p>
+                {% if ads.category == 'Jobs' %}
+                    <span>Salary:</span> <br>SR {{ads.price}}
+                {% elif ads.category == 'Selling' or ads.category == 'Purchases'%}
+                    <span>Price:</span> <br> SR {{ads.price}}
+                {% endif %}
+            </p>
+            <p>
+                <span>Published At:</span><br> {{ads.published_at|date:'d M o'}}
+            </p>
+            <p>
+                <span>Category:</span> <br>{{ads.category}}
+            </p>
+            <p>
+                <span>Wroten By:</span> <br>{{ads.user.username}}
+            </p>
+            <a href="{% url 'accounts:user_contact_info' %}">
+              Contact With {{ads.user.username}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+  {% endblock %}
