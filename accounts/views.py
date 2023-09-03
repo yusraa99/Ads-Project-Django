@@ -61,3 +61,11 @@ def profile_edit(request):
 
     return render(request,'accounts/profile_edit.html',{'userform':userform,'profileform':profileform})
 
+@login_required
+def user_ads_all(request):
+    user1=User.objects.get(username=request.user)
+    
+    print(user1)
+    all_ads=Ads.objects.all()
+    context={'all_ads':all_ads, 'user1':user1}
+    return render(request,'accounts/user_ads_all.html',context)

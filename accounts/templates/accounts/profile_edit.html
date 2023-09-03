@@ -17,8 +17,7 @@
             <form  method="post" enctype="multipart/form-data">
                 {% csrf_token %}
               <div>
-                {% comment %} {{ userform.username.label_tag }} {% endcomment %}
-                {% comment %} {{ userform.username }} {% endcomment %}
+                
                 {{ userform.as_p}}
               </div>
               

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import AdsForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
-
+from django.urls import reverse
 
 # Create your views here.
 
@@ -33,7 +33,35 @@ def user_ads_add(request):
 def ads_details(request,ads_url):
     ads_title=ads_url.replace('-',' ')
     ads=Ads.objects.get(title=ads_title)
+    
     # print(ads)
     context={'ads':ads}
     return render(request,'ads/adsDetails.html',context)
 
+@login_required
+def ads_edit(request,ads_url):
+
+    ads_title=ads_url.replace('-',' ')
+    ads=Ads.objects.get(title=ads_title)
+
+    if request.method=="POST":
+        adsform=AdsForm(request.POST,request.FILES,instance=ads)
+        # profileform=ProfileForm(request.POST,request.FILES,instance=profile)
+        if adsform.is_valid():
+            adsform.save()
+            return redirect(reverse('accounts:user_ads_all'))
+
+    else:
+        adsform=AdsForm(instance=ads)
+
+    return render(request,'ads/editAds.html',{'adsform':adsform, 'ads':ads})
+
+
+@login_required
+def ads_delete(request,ads_url):
+    ads_title=ads_url.replace('-',' ')
+    ads=Ads.objects.get(title=ads_title)
+
+    ads.delete()
+    
+    return redirect(reverse('accounts:user_ads_all'))

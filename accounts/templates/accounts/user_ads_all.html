@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+  
+  <!-- furniture section -->
+
+  <section class="furniture_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          My Advertisments
+        </h2>
+        
+      </div>
+      <div class="row">
+        {% for all_ads in all_ads %}
+            {% if all_ads.user == user1 %}
+            <div class="col-md-6 col-lg-4">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="images/f1.png" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      {{all_ads.title}}
+                    </h5>
+                    <div class="price_box">
+                      <h6 class="price_heading">
+                        <span>SR</span> {{all_ads.price}}
+                      </h6>
+                      <a href="{% url 'ads:ads_details' ads_url=all_ads.title_url %}" style="border: 1px solid #6bb7be;width: 25%;text-align: center;">
+                        Detail
+                      </a>
+                      <a href="{% url 'ads:ads_edit' ads_url=all_ads.title_url %}" style="color: #28a745;border: 1px solid #28a745;width: 25%;text-align: center;">
+                        Edit
+                      </a>
+                      <a href="{% url 'ads:ads_delete' ads_url=all_ads.title_url %}" style="color: #dc3545; border: 1px solid #dc3545;width: 25%;text-align: center;">
+                        Delete
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+        
+        {% endfor %}
+
+        
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end furniture section -->
+  {% endblock content %}
