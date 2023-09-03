@@ -1,1 +1,41 @@
-HJIIIII
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+  <!-- about section -->
+
+  <section class="about_section layout_padding long_section">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-md-8 mx-auto" style="text-align:center">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Owner Information
+              </h2>
+              <br>
+            </div>
+            <p>
+              <span>First Name: </span>{{user.first_name}}
+            </p>
+            <p>
+                <span>Last Name: </span>{{user.last_name}}
+              </p>
+              <p>
+                <span>Email: </span> {{user.email}}
+              </p>
+            <p>
+                <span>Location: </span>{{user_info.city}}
+            </p>
+            <p>
+                <span>Phone Number: </span>{{user_info.phone_number}}
+            </p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+  {% endblock %}

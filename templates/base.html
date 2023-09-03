@@ -74,24 +74,40 @@
                 Add Ads
               </span>
             </a>
-            <a href="">
+            <a href="{% url 'accounts:profile' %}">
               <span>
                 Profile
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
+            {% comment %} <form id="logout-form" method="post" action="/logout/">
+              <input type="hidden" name="csrfmiddlewaretoken" value="QSPNCqqTovPH3pgYM2JYgrJTQPcu6cVdqj3jFnoUXTG9CeJrf2WoWMrQsH6O684U">
+              <button type="submit">Log out</button>
+          </form> {% endcomment %}
+          <a href="{% url 'logout' %}">
+            <span>
+              Log out
+            </span>
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </a>
             {% else %}
-            <a href="">
+            <a href="{% url 'login' %}">
               <span>
                 Login
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
-            <a href="{% url 'login' %}">
+            {% comment %} <a href="{% url 'login' %}"> {% endcomment %}
+              <a href="{% url 'ads:user_ads_add' %}">
               <span>
                 Add Ads
               </span>
             </a>
+
+            {% comment %} <form id="logout-form" method="post" action="/admin/logout/">
+              <input type="hidden" name="csrfmiddlewaretoken" value="QSPNCqqTovPH3pgYM2JYgrJTQPcu6cVdqj3jFnoUXTG9CeJrf2WoWMrQsH6O684U">
+              <button type="submit">Log out</button>
+          </form>  {% endcomment %}
             {% endif %}
           </div>
         </div>

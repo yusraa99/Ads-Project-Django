@@ -40,7 +40,7 @@
             <p>
                 <span>Wroten By:</span> <br>{{ads.user.username}}
             </p>
-            <a href="{% url 'accounts:user_contact_info' %}">
+            <a href="{% url 'accounts:user_contact_info' user_contact=ads.user.username %}">
               Contact With {{ads.user.username}}
             </a>
           </div>
