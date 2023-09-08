@@ -36,3 +36,5 @@ Here are a few additional tips for running a Django project from GitHub:
 * If you are using a Windows machine, you may need to use the `venv\Scripts\activate` command instead of the `source venv/bin/activate` command to activate the virtual environment.
 * If you are using a Mac, you may need to use the `source venv/bin/activate` command instead of the `venv/Scripts/activate` command to activate the virtual environment.
 * If you are using a Linux machine, you may need to use the `source venv/bin/`
+* If you use SQLite you should change some of database settings such as NAME (name of Database), USER, PASSWORD
+* If you use PostgreSQL you should change some of database settings such as NAME (name of Database), USER, PASSWORD
